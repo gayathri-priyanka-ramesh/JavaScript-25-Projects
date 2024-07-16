@@ -1,0 +1,24 @@
+.container {
+  background-color: palegoldenrod;
+  padding: 10px;
+}
+.item {
+  margin: 10px;
+  background-color: paleturquoise;
+  border: 1px solid;
+}
+h3 {
+  cursor: pointer;
+}
+i {
+  margin-left: 50px;
+}
+p {
+  display: none;
+}
+h3.active + p {
+  display: block;
+}
+h3.active i {
+  rotate: 180deg;
+}
