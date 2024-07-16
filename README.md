@@ -26,6 +26,7 @@ This repository contains the project files I created while following the <b>Buil
 22. <b>Pagination</b>: Implementing pagination for content.
 23. <b>Recipe App</b>: Building a recipe application.
 24. <b>Notes App with Local Storage</b>: Developing a notes application with local storage support.
+25. <b>Timer</b>: Implementing a timer with pause and reset
 
 ## Acknowledgements
 - A big thanks to <b>Sangam Mukherjee</b> for the [Build 25 JavaScript Projects in 9 Hours | JS Full Course | JavaScript Interview Questions 2024](https://youtu.be/YoVdhJgw8Wc?feature=shared).
