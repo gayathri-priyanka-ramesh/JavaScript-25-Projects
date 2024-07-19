@@ -1,0 +1,36 @@
+body {
+  background-color: palegoldenrod;
+}
+body * {
+  color: brown;
+}
+body.dark {
+  background-color: brown;
+}
+body.dark * {
+  color: palegoldenrod;
+}
+
+/* [data-theme="dark"] {
+  background-color: maroon;
+  color: peachpuff;
+}
+[data-theme="dark"] * {
+  color: peachpuff;
+} */
+
+:root {
+  --bg-color: peachpuff;
+  --text-color: maroon;
+}
+[data-theme="dark"] {
+  --bg-color: maroon;
+  --text-color: peachpuff;
+}
+body {
+  background-color: var(--bg-color);
+}
+body * {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}

@@ -39,7 +39,7 @@ setTimeout(() => {
       let slideDistance = index - slideIndex;
       // console.log(
       //   "Index:",
-      //   index,
+      //   index,q
       //   "SlideIndex:",
       //   slideIndex,
       //   "SlideDistance:",
