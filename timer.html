@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Timer
+    <h1></h1>
+    <button id="reset">Reset</button>
+    <button id="pause">Pause</button>
+    <script>
+      const timer = document.querySelector("h1");
+      const reset = document.querySelector("#reset");
+      const pause = document.querySelector("#pause");
+
+      let time;
+      let interval;
+      let paused = false;
+
+      reset.addEventListener("click", () => {
+        clearInterval(interval);
+        startNewTimer(300);
+      });
+
+      function startNewTimer(num) {
+        time = num;
+        timer.textContent = `${parseInt(time / 60)}:${String(
+          time % 60
+        ).padStart(2, "0")}`;
+        interval = setInterval(() => {
+          console.log("~~~~~~ ~", time);
+          time -= 1;
+          timer.textContent = `${parseInt(time / 60)}:${String(
+            time % 60
+          ).padStart(2, "0")}`;
+          console.log(timer.textContent);
+          if (time == 0) clearTimer();
+        }, 1000);
+      }
+      startNewTimer(5);
+
+      function clearTimer() {
+        clearInterval(interval);
+        console.log("Time", time);
+      }
+
+      pause.addEventListener("click", () => {
+        paused = !paused;
+        console.log("Pased", paused);
+        if (!paused) {
+          startNewTimer(time);
+        } else {
+          console.log("Time Pause", time);
+          clearInterval(interval);
+        }
+      });
+    </script>
+  </body>
+</html>

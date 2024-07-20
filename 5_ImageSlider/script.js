@@ -74,6 +74,8 @@ setTimeout(() => {
     getActiveDot(currentSlide);
   });
 
+  // https://www.linkedin.com/help/linkedin/answer/a545578
+  
   // dotArr.forEach((dot) => {
   //   dot.addEventListener("click", (e) => {
   //     const currentSlide = getCurrentSlide(e.target.dataset.slide);
