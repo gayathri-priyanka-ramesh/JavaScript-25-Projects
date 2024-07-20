@@ -1,0 +1,10 @@
+.scrollBackground {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: palegoldenrod;
+}
+.scroll {
+  height: 10px;
+  background-color: maroon;
+}
