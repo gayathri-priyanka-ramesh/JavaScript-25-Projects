@@ -11,7 +11,6 @@ window.addEventListener("scroll", (e) => {
   );
   console.log("scrollTop:", document.body.scrollTop);
   console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
-
   console.log("Document Element");
   console.log(
     "scrollHeight:",
