@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <label for="amt">Bill Amount</label>
+      <input type="number" name="amt" id="amt" value="1000" /><br />
+
+      <label for="dis">Discount Percentage </label>
+      <input type="range" name="dis" id="dis" value="10" min="0" max="50" />
+      <span id="disPer">0</span><br />
+
+      <label for="tip">Tip Percentage</label>
+      <input type="range" name="tip" id="tip" value="26" min="0" max="50" />
+      <span id="tipPer">0</span><br />
+
+      <label for="cus">No.of Customers</label>
+      <input type="range" name="cus" id="cus" value="15" min="0" max="25" />
+      <span id="cusCnt">0</span><br />
+
+      <button>Generate Bill</button>
+
+      <p>Total Tip Paid: <span id="tipRes">0</span></p>
+      <p>Total Amount to Pay: <span id="amtRes">0</span></p>
+      <p>Amount to be paid by Each Customer: <span id="cusRes">0</span></p>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>

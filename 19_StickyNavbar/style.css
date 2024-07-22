@@ -1,0 +1,17 @@
+div {
+  height: 100px;
+  border: 1px solid;
+}
+ul {
+  background-color: palegoldenrod;
+  display: flex;
+  gap: 50px;
+  border: 1px solid;
+  /* position: sticky;
+  top: 0; */
+}
+
+.make-sticky {
+  position: fixed;
+  top: 0;
+}
