@@ -3,7 +3,7 @@
 This repository contains the project files I created while following the <b>Build 25 JavaScript Projects in 9 Hours</b> tutorial by <b>Sangam Mukherjee</b> on <b>YouTube</b> which provided a comprehensive guide to building practical JavaScript projects.
 
 ## Projects
-
+0. <b>Timer</b>: Implementing a timer with pause and reset
 1. <b>Accordion</b>: Creating an interactive accordion component.
 2. <b>Random Color Generator</b>: Building a tool to generate random colors.
 3. <b>Star Rating Component</b>: Developing a star rating system.
@@ -28,7 +28,7 @@ This repository contains the project files I created while following the <b>Buil
 22. <b>Pagination</b>: Implementing pagination for content.
 23. <b>Recipe App</b>: Building a recipe application.
 24. <b>Notes App with Local Storage</b>: Developing a notes application with local storage support.
-25. <b>Timer</b>: Implementing a timer with pause and reset
+25. <b>Encryption Decryption</b>: Secure text with a secret key
 
 ## Acknowledgements
 
