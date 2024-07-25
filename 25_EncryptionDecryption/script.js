@@ -5,8 +5,8 @@ const result = document.querySelector("p");
 const copyButton = document.getElementById("copy");
 const resetButton = document.getElementById("reset");
 
-result.style.display = "none";
 copyButton.style.display = "none";
+result.style.display = "none";
 
 buttonsContainer.addEventListener("click", (e) => {
   const target = e.target;
@@ -26,7 +26,6 @@ buttonsContainer.addEventListener("click", (e) => {
       console.log("Decryption");
       const decipher = CryptoJS.AES.decrypt(data, _key);
       console.log("Decipher:", decipher);
-      console.log(decipher.toString());
       resValue = decipher.toString(CryptoJS.enc.Utf8);
       console.log("Result:", resValue);
     }
