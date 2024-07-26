@@ -1,83 +1,97 @@
 const inputField = document.querySelector("input");
 const addButton = document.querySelector("#add");
 const errorMsg = document.querySelector("p");
-const notes = document.querySelector(".notes");
-let currentID = 0;
-let isEdit = null;
+const notesContainer = document.querySelector(".notesContainer");
 
-window.addEventListener("DOMContentLoaded", () => {
-  notesAppSimple();
-  // notesAppArray();
-  // notesAppLocalStorage();
+notesContainer.style.border = "1px solid";
+let currentEditEvent = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const notesList = getNotesList();
+  notesList.forEach((noteData) => {
+    const newNoteItem = createNewNote(noteData);
+    notesContainer.appendChild(newNoteItem);
+  });
 });
 
-function notesAppSimple() {
-  addButtonClick();
+addButton.addEventListener("click", () => {
+  const noteData = inputField.value.trim();
+  if (noteData) {
+    if (currentEditEvent) {
+      const notesList = getNotesList();
+      const currentNoteItem = currentEditEvent.target.previousElementSibling;
+      const currentIndex = notesList.indexOf(currentNoteItem.textContent);
+      currentNoteItem.textContent = noteData;
+      notesList.splice(currentIndex, 1, noteData);
+      localStorage.setItem("notes", JSON.stringify(notesList));
+      addButton.innerText = "Add Note";
+      currentEditEvent = null;
+    } else {
+      const newNoteItem = createNewNote(noteData);
+      notesContainer.appendChild(newNoteItem);
+      saveToStorage(noteData);
+    }
+    inputField.value = "";
+  } else errorMsg.textContent = "Enter Data to add Note";
+});
+
+notesContainer.addEventListener("click", (e) => {
+  const target = e.target;
+  const targetParent = target.parentElement;
+  const noteText = targetParent.children[0].innerText;
+  console.log(
+    "Target:",
+    target,
+    "\nParent of Target:",
+    targetParent,
+    "\nNote Text:",
+    noteText
+  );
+  if (target.innerText === "Edit") {
+    inputField.value = noteText;
+    inputField.focus();
+    addButton.innerText = "Update Note";
+    currentEditEvent = e;
+    console.log("currentEditEvent:", currentEditEvent);
+  }
+  if (target.innerText === "Delete") {
+    targetParent.remove();
+    const notesList = getNotesList();
+    const currentIndex = notesList.indexOf(noteText);
+    notesList.splice(currentIndex, 1);
+    localStorage.setItem("notes", JSON.stringify(notesList));
+  }
+});
+
+function getNotesList() {
+  let notesList;
+  const notesListInStorage = localStorage.getItem("notes");
+  if (notesListInStorage === null) notesList = [];
+  else notesList = JSON.parse(notesListInStorage);
+  return notesList;
 }
 
-function notesAppArray() {}
-
-function notesAppLocalStorage() {}
-
-function addButtonClick() {
-  addButton.addEventListener("click", () => {
-    const noteData = inputField.value.trim();
-    if (noteData) {
-      if (isEdit) {
-        console.log(isEdit);
-        const notesArr = document.querySelectorAll(".noteText");
-        notesArr[isEdit].textContent = noteData;
-        isEdit = null;
-      } else {
-        const newNoteItem = createNewNote(noteData);
-        notes.appendChild(newNoteItem);
-
-        // const currentID = notes.childElementCount + 1;
-        currentID++;
-      }
-      inputField.value = "";
-    } else errorMsg.textContent = "Enter Data to add Note";
-  });
+function saveToStorage(noteValue) {
+  const notesList = getNotesList();
+  notesList.push(noteValue);
+  localStorage.setItem("notes", JSON.stringify(notesList));
 }
 
 function createNewNote(noteValue) {
   const noteWrapper = document.createElement("div");
-  noteWrapper.classList.add("noteWrapper");
+  noteWrapper.style.cssText =
+    "border:2px solid orange; margin:20px; padding:10px";
 
   const noteText = document.createElement("h3");
-  noteText.classList.add("noteText");
-  noteText.dataset.id = currentID;
   noteText.textContent = noteValue;
 
   const editButton = document.createElement("button");
-  editButton.classList.add("edit");
-  editButton.dataset.id = currentID;
   editButton.textContent = "Edit";
 
   const deleteButton = document.createElement("button");
-  deleteButton.classList.add("delete");
-  deleteButton.dataset.id = currentID;
   deleteButton.textContent = "Delete";
 
   noteWrapper.append(noteText, editButton, deleteButton);
   console.log(noteWrapper);
   return noteWrapper;
 }
-
-notes.addEventListener("click", (e) => {
-  const target = e.target;
-
-  if (target.classList.contains("edit")) {
-    const notesArr = document.querySelectorAll(".noteText");
-    console.log(notesArr);
-    inputField.value = notesArr[target.dataset.id].textContent;
-    isEdit = target.dataset.id;
-  }
-
-  if (target.classList.contains("delete")) {
-    const notesWraperArr = document.querySelectorAll(".noteWrapper");
-    console.log(notesWraperArr);
-    notesWraperArr.remove(notesWraperArr[target.dataset.id]);
-    console.log(notesWraperArr);
-  }
-});
